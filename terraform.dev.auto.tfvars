@@ -3,7 +3,7 @@ project          = "cloudx-2026q3-finaltask"
 environment      = "dev"
 owner            = "alex-doka"
 cost_center      = "learning"
-primary_location = "eastus"
+primary_location = "polandcentral"
 
 app_service_plans = {
   plc = {
@@ -15,3 +15,6 @@ app_service_plans = {
     sku_name = "B1"
   }
 }
+
+sql_database_sku         = "Basic"
+sql_database_max_size_gb = 2

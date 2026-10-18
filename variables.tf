@@ -36,3 +36,13 @@ variable "app_service_plans" {
     os_type  = optional(string, "Linux")
   }))
 }
+
+variable "sql_database_sku" {
+  description = "Azure SQL Database SKU. Basic is the cheapest option."
+  type        = string
+}
+
+variable "sql_database_max_size_gb" {
+  description = "Azure SQL Database max size in GB."
+  type        = number
+}
