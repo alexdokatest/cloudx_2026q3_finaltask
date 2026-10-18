@@ -1,3 +1,7 @@
+.mcp.json
+.terraform.lock.hcl
+.claude
+
 # Local .terraform directories
 .terraform/
 
