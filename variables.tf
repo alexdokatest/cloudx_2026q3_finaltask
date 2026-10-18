@@ -46,3 +46,13 @@ variable "sql_database_max_size_gb" {
   description = "Azure SQL Database max size in GB."
   type        = number
 }
+
+variable "key_vault_name_prefix" {
+  description = "Key Vault name prefix. The full name is <prefix>-<environment>-<unique suffix> and must stay within 24 characters."
+  type        = string
+}
+
+variable "key_vault_sku_name" {
+  description = "Key Vault SKU (standard or premium)."
+  type        = string
+}

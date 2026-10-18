@@ -18,3 +18,6 @@ app_service_plans = {
 
 sql_database_sku         = "Basic"
 sql_database_max_size_gb = 2
+
+key_vault_name_prefix = "kv-cloudx"
+key_vault_sku_name    = "standard"
