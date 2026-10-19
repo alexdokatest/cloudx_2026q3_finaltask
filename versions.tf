@@ -1,5 +1,6 @@
 terraform {
-  required_version = ">= 1.10.0"
+  # 1.10 brings ephemeral resources, 1.11 the write-only (*_wo) arguments used for the SQL password.
+  required_version = ">= 1.11.0"
 
   required_providers {
     azurerm = {
