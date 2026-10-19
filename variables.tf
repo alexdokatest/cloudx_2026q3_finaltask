@@ -66,3 +66,13 @@ variable "sql_password_version" {
   description = "Bump to rotate the SQL admin password (applied to the server and the Key Vault secret together)."
   type        = number
 }
+
+variable "traffic_manager_routing_method" {
+  description = "Traffic Manager routing method (Performance routes to the endpoint with the lowest latency)."
+  type        = string
+}
+
+variable "traffic_manager_dns_ttl" {
+  description = "DNS TTL in seconds for the Traffic Manager profile."
+  type        = number
+}

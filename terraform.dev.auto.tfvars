@@ -24,3 +24,6 @@ key_vault_sku_name    = "standard"
 
 sql_connection_secret_name = "alex-doka-1"
 sql_password_version       = 1
+
+traffic_manager_routing_method = "Performance"
+traffic_manager_dns_ttl        = 60
