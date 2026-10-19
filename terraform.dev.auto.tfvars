@@ -8,11 +8,11 @@ primary_location = "polandcentral"
 app_service_plans = {
   plc = {
     location = "polandcentral"
-    sku_name = "B1"
+    sku_name = "S1"
   }
   swc = {
     location = "swedencentral"
-    sku_name = "B1"
+    sku_name = "S1"
   }
 }
 

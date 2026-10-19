@@ -29,7 +29,7 @@ variable "primary_location" {
 }
 
 variable "app_service_plans" {
-  description = "App Service Plans keyed by a short name. B1 is the cheapest SKU supported by Traffic Manager and Key Vault references."
+  description = "App Service Plans keyed by a short name. S1 is the cheapest SKU on which App Service serves the Traffic Manager hostname (Basic returns 404)."
   type = map(object({
     location = string
     sku_name = string
