@@ -56,3 +56,13 @@ variable "key_vault_sku_name" {
   description = "Key Vault SKU (standard or premium)."
   type        = string
 }
+
+variable "sql_connection_secret_name" {
+  description = "Name of the Key Vault secret that holds the SQL connection string."
+  type        = string
+}
+
+variable "sql_password_version" {
+  description = "Bump to rotate the SQL admin password (applied to the server and the Key Vault secret together)."
+  type        = number
+}

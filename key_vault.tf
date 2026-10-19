@@ -36,3 +36,14 @@ resource "azurerm_key_vault_access_policy" "web_app" {
 
   secret_permissions = ["Get", "List"]
 }
+
+resource "azurerm_key_vault_secret" "sql_connection_string" {
+  name             = var.sql_connection_secret_name
+  key_vault_id     = azurerm_key_vault.main.id
+  value_wo         = local.sql_connection_string
+  value_wo_version = var.sql_password_version
+  tags             = local.tags
+
+  # The policy is a separate resource, so Terraform cannot infer that it must exist before the write.
+  depends_on = [azurerm_key_vault_access_policy.terraform]
+}

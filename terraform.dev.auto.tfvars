@@ -21,3 +21,6 @@ sql_database_max_size_gb = 2
 
 key_vault_name_prefix = "kv-cloudx"
 key_vault_sku_name    = "standard"
+
+sql_connection_secret_name = "alex-doka-1"
+sql_password_version       = 1

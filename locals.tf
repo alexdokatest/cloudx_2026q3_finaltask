@@ -5,6 +5,17 @@ locals {
 
   sql_admin_login = "sqladmin"
 
+  # Built from an ephemeral value, so it is ephemeral itself and is only usable in write-only attributes.
+  sql_connection_string = join(";", [
+    "Server=tcp:${azurerm_mssql_server.main.fully_qualified_domain_name},1433",
+    "Initial Catalog=${azurerm_mssql_database.main.name}",
+    "User ID=${local.sql_admin_login}",
+    "Password=${ephemeral.random_password.sql_admin.result}",
+    "Encrypt=True",
+    "TrustServerCertificate=False",
+    "Connection Timeout=30",
+  ])
+
   tags = {
     env     = var.environment
     owner   = var.owner

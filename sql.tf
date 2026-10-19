@@ -1,17 +1,20 @@
-resource "random_password" "sql_admin" {
+# Ephemeral: the password never reaches the plan or the state. It is pushed to SQL and Key Vault
+# through write-only attributes; bump sql_password_version to rotate it in both places at once.
+ephemeral "random_password" "sql_admin" {
   length  = 32
   special = true
 }
 
 resource "azurerm_mssql_server" "main" {
-  name                         = "sql-${local.name_suffix}-${local.unique_suffix}"
-  resource_group_name          = azurerm_resource_group.main.name
-  location                     = azurerm_resource_group.main.location
-  version                      = "12.0"
-  administrator_login          = local.sql_admin_login
-  administrator_login_password = random_password.sql_admin.result
-  minimum_tls_version          = "1.2"
-  tags                         = local.tags
+  name                                    = "sql-${local.name_suffix}-${local.unique_suffix}"
+  resource_group_name                     = azurerm_resource_group.main.name
+  location                                = azurerm_resource_group.main.location
+  version                                 = "12.0"
+  administrator_login                     = local.sql_admin_login
+  administrator_login_password_wo         = ephemeral.random_password.sql_admin.result
+  administrator_login_password_wo_version = var.sql_password_version
+  minimum_tls_version                     = "1.2"
+  tags                                    = local.tags
 }
 
 resource "azurerm_mssql_database" "main" {

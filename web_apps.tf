@@ -14,7 +14,9 @@ resource "azurerm_linux_web_app" "this" {
 
   app_settings = {
     APP_REGION = each.value.location
-    APP_CODE   = "require('http').createServer((q,s)=>s.end('Region: '+process.env.APP_REGION)).listen(process.env.PORT||8080)"
+    # Resolved by App Service through the system-assigned identity (see the access policies in key_vault.tf).
+    SQL_CONNECTION_STRING = "@Microsoft.KeyVault(VaultName=${azurerm_key_vault.main.name};SecretName=${azurerm_key_vault_secret.sql_connection_string.name};SecretVersion=)"
+    APP_CODE              = "require('http').createServer((q,s)=>s.end('Region: '+process.env.APP_REGION)).listen(process.env.PORT||8080)"
   }
 
   site_config {
